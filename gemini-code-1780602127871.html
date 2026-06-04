@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Digital Mat | Yoga Circle by Cult.fit</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Lucide Icons for clean, minimalist iconography -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom design system vars matching our Grounding Palette */
+        :root {
+            --color-alabaster: #FDFBF7;
+            --color-terracotta: #D36B42;
+            --color-slate: #343D46;
+            --color-espresso: #231B1A;
+            --color-sage: #8AA399;
+        }
+        body {
+            background-color: var(--color-alabaster);
+            color: var(--color-espresso);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-[#D36B42]/20">
+
+    <!-- Minimalist Header / Navigation -->
+    <header class="border-b border-[#343D46]/10 px-6 py-4 sticky top-0 bg-[#FDFBF7]/90 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- Compounding Loop Logo Graphic Placeholder -->
+                <svg class="w-8 h-8 text-[#D36B42]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="9" stroke-dasharray="4 2"/>
+                    <circle cx="12" cy="12" r="6"/>
+                </svg>
+                <div>
+                    <span class="text-lg font-semibold tracking-wide uppercase text-[#231B1A]">Yoga Circle</span>
+                    <span class="text-xs text-[#343D46]/60 block -mt-1 font-medium">by cult.fit</span>
+                </div>
+            </div>
+            
+            <!-- User Status Anchor -->
+            <div class="flex items-center gap-4 text-sm font-medium text-[#343D46]">
+                <div class="hidden sm:flex items-center gap-1.5 bg-[#8AA399]/10 px-3 py-1.5 rounded-full text-[#343D46]">
+                    <span class="w-2 h-2 rounded-full bg-[#8AA399] animate-pulse"></span>
+                    <span>Daily Habit Active</span>
+                </div>
+                <div class="flex items-center gap-1 text-[#D36B42] bg-[#D36B42]/10 px-3 py-1.5 rounded-full">
+                    <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
+                    <span id="header-streak-count" class="font-bold text-base">14</span><span>d streak</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Framework -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- LEFT COLUMN: The Immersive Streaming Player Wrapper (8 Columns) -->
+        <section class="lg:col-span-8 flex flex-col gap-4">
+            
+            <!-- Live Sync Time-Correction Banner Header -->
+            <div class="bg-[#231B1A] text-[#FDFBF7] p-4 rounded-2xl shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+                        <h2 class="text-md font-semibold tracking-tight">Morning Decompression Loop</h2>
+                    </div>
+                    <p class="text-xs text-[#FDFBF7]/60 mt-0.5">Scheduled slot: 7:00 AM — 7:45 AM IST</p>
+                </div>
+                <!-- Dynamic Interface State Badge -->
+                <div id="sync-status-badge" class="bg-[#D36B42] text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider">
+                    Live Stream Mode
+                </div>
+            </div>
+
+            <!-- The Custom Video Player Frame -->
+            <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden group shadow-lg border border-[#343D46]/10">
+                
+                <!-- Timeline Sync Roadblock Interceptor Modal Overlay (Frictionless Feature) -->
+                <div id="sync-overlay" class="absolute inset-0 bg-[#231B1A]/95 flex flex-col items-center justify-center p-6 text-center z-20 transition-opacity duration-300">
+                    <div class="max-w-md">
+                        <div class="w-12 h-12 rounded-full bg-[#D36B42]/20 text-[#D36B42] flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="clock" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-[#FDFBF7] mb-2">You arrived 14 minutes late</h3>
+                        <p class="text-sm text-[#FDFBF7]/70 mb-6">Don't abandon today's consistency loop. Choose how you want to step into your physical practice space below.</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                            <button onclick="setPlayerMode('live')" class="bg-transparent hover:bg-[#FDFBF7]/10 text-[#FDFBF7] border border-[#FDFBF7]/30 text-sm font-medium px-5 py-3 rounded-xl transition-all">
+                                Jump to Current Live Pose
+                            </button>
+                            <button onclick="setPlayerMode('sync')" class="bg-[#D36B42] hover:bg-[#D36B42]/90 text-[#FDFBF7] text-sm font-semibold px-5 py-3 rounded-xl shadow-md transition-all">
+                                Restart from Beginning
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Element Context Wrapper (Configured with automated fallback stream demo layout) -->
+                <div class="w-full h-full flex items-center justify-center bg-[#231B1A]">
+                    <iframe id="video-stream-iframe" class="w-full h-full" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&controls=1&modestbranding=1&rel=0" title="Yoga Circle Practice Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                
+                <!-- Bottom Status Control Overlay inside Player context -->
+                <div class="absolute bottom-4 left-4 z-10 bg-[#231B1A]/80 backdrop-blur-md px-3 py-1.5 rounded-lg text-xs text-[#FDFBF7]/90 flex items-center gap-2">
+                    <i data-lucide="users" class="w-3.5 h-3.5 text-[#8AA399]"></i>
+                    <span id="live-user-ticker" class="font-bold">4,821</span> <span>adults breathing with you right now</span>
+                </div>
+            </div>
+
+            <!-- Micro-Practice Context Links Area -->
+            <div class="bg-white border border-[#343D46]/10 p-5 rounded-2xl shadow-xs">
+                <div class="flex justify-between items-start gap-4">
+                    <div>
+                        <h4 class="font-bold text-[#231B1A]">Short on time today?</h4>
+                        <p class="text-xs text-[#343D46]/70 mt-1">Access our verified library of hyper-focused daily micro-practices directly on our official stream hub page if you cannot finish the main slot session.</p>
+                    </div>
+                    <a href="https://www.youtube.com/@YogaCirclebycult/shorts" target="_blank" class="shrink-0 flex items-center gap-1 text-xs font-bold text-[#D36B42] bg-[#D36B42]/5 hover:bg-[#D36B42]/10 border border-[#D36B42]/20 px-3 py-2 rounded-xl transition-all">
+                        <span>Open Shorts Hub</span>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RIGHT COLUMN: Behavioral Habit Tracking & Engagement Layer (4 Columns) -->
+        <aside class="lg:col-span-4 flex flex-col gap-6">
+            
+            <!-- Focus Architecture card -->
+            <div class="bg-white border border-[#343D46]/10 p-5 rounded-2xl shadow-xs">
+                <span class="text-[10px] font-bold tracking-widest uppercase bg-[#8AA399]/10 text-[#343D46] px-2.5 py-1 rounded-md">Today's Alignment Focus</span>
+                <h3 class="text-lg font-bold text-[#231B1A] mt-2.5">Somatic Spine & Hip Decompression</h3>
+                <p class="text-xs text-[#343D46]/70 mt-1 leading-relaxed">Tailored specifically for adults over 35 experiencing corporate physical fatigue. Eliminates morning stiffness through low-strain mechanical posture correction.</p>
+            </div>
+
+            <!-- Habit Loop Engine Box Component -->
+            <div class="bg-white border border-[#343D46]/10 p-6 rounded-2xl shadow-xs flex flex-col gap-5">
+                <div>
+                    <h3 class="font-bold text-lg text-[#231B1A]">Your Weekly Commitment</h3>
+                    <p class="text-xs text-[#343D46]/60">Physical control requires daily execution, not physical perfection.</p>
+                </div>
+
+                <!-- Complete Primary Interactive CTA Button -->
+                <button id="habit-complete-btn" onclick="logDailyRitual()" class="w-full bg-[#D36B42] hover:bg-[#D36B42]/95 text-white font-semibold py-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition-all cursor-pointer">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    <span>Mark Today's Ritual Complete</span>
+                </button>
+
+                <!-- Minimalist Interactive Calendar Streak Matrix Container Grid -->
+                <div class="border-t border-[#343D46]/10 pt-4">
+                    <div class="flex justify-between items-center text-xs text-[#343D46]/60 mb-3">
+                        <span class="font-medium">Weekly Tracker Log</span>
+                        <span id="streak-panel-text" class="font-bold text-[#D36B42]">14 Days Active</span>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2.5 text-center">
+                        <div><span class="text-[10px] uppercase font-bold text-[#343D46]/40 block mb-1">Mon</span><div class="w-full aspect-square rounded-lg bg-[#8AA399] text-[#FDFBF7] text-xs flex items-center justify-center font-bold"><i data-lucide="check" class="w-3.5 h-3.5"></i></div></div>
+                        <div><span class="text-[10px] uppercase font-bold text-[#343D46]/40 block mb-1">Tue</span><div class="w-full aspect-square rounded-lg bg-[#8AA399] text-[#FDFBF7] text-xs flex items-center justify-center font-bold"><i data-lucide="check" class="w-3.5 h-3.5"></i></div></div>
+                        <div><span class="text-[10px] uppercase font-bold text-[#343D46]/40 block mb-1">Wed</span><div class="w-full aspect-square rounded-lg bg-[#8AA399] text-[#FDFBF7] text-xs flex items-center justify-center font-bold"><i data-lucide="check" class="w-3.5 h-3.5"></i></div></div>
+                        <div><span class="text-[10px] uppercase font-bold text-[#343D46]/40 block mb-1">Thu</span><div class="w-full aspect-square rounded-lg bg-[#8AA399] text-[#FDFBF7] text-xs flex items-center justify-center font-bold"><i data-lucide="check" class="w-3.5 h-3.5"></i></div></div>
+                        <div><span class="text-[10px] uppercase font-bold text-[#343D46]/40 block mb-1">Fri</span><div id="day-current-node" class="w-full aspect-square rounded-lg bg-[#343D46]/5 border-2 border-dashed border-[#343D46]/20 text-[#343D46]/40 text-xs flex items-center justify-center font-bold"></div></div>
+                        <div><span class="text-[10px] uppercase font-bold text-[#343D46]/40 block mb-1">Sat</span><div class="w-full aspect-square rounded-lg bg-[#343D46]/5 text-xs flex items-center justify-center font-medium text-[#343D46]/30"></div></div>
+                        <div><span class="text-[10px] uppercase font-bold text-[#343D46]/40 block mb-1">Sun</span><div class="w-full aspect-square rounded-lg bg-[#343D46]/5 text-xs flex items-center justify-center font-medium text-[#343D46]/30"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WhatsApp Ecosystem Notification Simulation Display Info box -->
+            <div class="bg-[#8AA399]/5 border border-[#8AA399]/20 p-4 rounded-2xl flex items-start gap-3">
+                <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 mt-0.5">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.503-5.713-1.458L0 24zm6.604-3.759l.363.216c1.548.919 3.141 1.403 4.983 1.404 5.485 0 9.947-4.414 9.95-9.845.002-2.631-1.02-5.105-2.879-6.967C17.218 3.189 14.74 2.166 12.012 2.166 6.522 2.166 2.06 6.582 2.057 12.016c-.001 1.896.499 3.742 1.448 5.394l.237.414-1.01 3.688 3.784-.981z"/></svg>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-[#231B1A]">Automated Link Routine Active</h4>
+                    <p class="text-[11px] text-[#343D46]/70 mt-0.5 leading-relaxed">Your personal streaming entry link is automatically pushed daily 15 minutes before your preferred time allocation via our automated WhatsApp hook infrastructure.</p>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#343D46]/10 py-6 text-center text-xs text-[#343D46]/50">
+        &copy; 2026 Yoga Circle by Cult.fit. Engineered for Somatic Mobility and Personal Freedom.
+    </footer>
+
+    <!-- Interactive Client Script -->
+    <script>
+        // Init icon scripts
+        lucide.createIcons();
+
+        // Local state management for execution tracking simulated models
+        let state = {
+            streak: 14,
+            ritualCompleted: false,
+            liveUsers: 4821
+        };
+
+        // Simulating background live user fluctuation mechanics
+        setInterval(() => {
+            let variance = Math.floor(Math.random() * 7) - 3;
+            state.liveUsers += variance;
+            document.getElementById('live-user-ticker').innerText = state.liveUsers.toLocaleString();
+        }, 4000);
+
+        // Core dynamic timeline sync selection engine function
+        function setPlayerMode(mode) {
+            const overlay = document.getElementById('sync-overlay');
+            const badge = document.getElementById('sync-status-badge');
+            const iframe = document.getElementById('video-stream-iframe');
+            
+            overlay.classList.add('opacity-0');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+
+            if (mode === 'live') {
+                badge.innerText = "Live Stream Mode";
+                badge.style.backgroundColor = "var(--color-terracotta)";
+                // Embed live point parameter
+                iframe.src = "https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&start=840&controls=1&modestbranding=1";
+            } else if (mode === 'sync') {
+                badge.innerText = "Time-Synced Replay";
+                badge.style.backgroundColor = "var(--color-slate)";
+                // Restart back to zero parameters seamlessly 
+                iframe.src = "https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&start=0&controls=1&modestbranding=1";
+            }
+        }
+
+        // Habit conversion action engine trigger
+        function logDailyRitual() {
+            if (state.ritualCompleted) return;
+
+            state.ritualCompleted = true;
+            state.streak += 1;
+
+            // Interface text rendering adjustments
+            document.getElementById('header-streak-count').innerText = state.streak;
+            document.getElementById('streak-panel-text').innerText = `${state.streak} Days Active`;
+            
+            const currentDayNode = document.getElementById('day-current-node');
+            currentDayNode.className = "w-full aspect-square rounded-lg bg-[#8AA399] text-[#FDFBF7] text-xs flex items-center justify-center font-bold";
+            currentDayNode.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i>`;
+            lucide.createIcons();
+
+            const completeBtn = document.getElementById('habit-complete-btn');
+            completeBtn.className = "w-full bg-[#8AA399] text-white font-semibold py-4 rounded-xl shadow-inner flex items-center justify-center gap-2 cursor-default transition-all";
+            completeBtn.innerHTML = `<i data-lucide="smile" class="w-5 h-5"></i><span>Daily Health Goal Maintained</span>`;
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
