@@ -101,7 +101,8 @@
 
                 <!-- Video Element Context Wrapper (Configured with automated fallback stream demo layout) -->
                 <div class="w-full h-full flex items-center justify-center bg-[#231B1A]">
-                    <iframe id="video-stream-iframe" class="w-full h-full" src="https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=0&controls=1&modestbranding=1&rel=0" title="Yoga Circle Practice Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                   
+               <iframe id="video-stream-iframe" class="w-full h-full" src="https://www.youtube.com/embed/live_stream?channel=UCSJ4gkVC6NrvII8umztf0Ow&autoplay=0&controls=1&modestbranding=1&rel=0" title="Yoga Circle Practice Stream" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
                 
                 <!-- Bottom Status Control Overlay inside Player context -->
@@ -217,7 +218,8 @@
                 badge.innerText = "Live Stream Mode";
                 badge.style.backgroundColor = "var(--color-terracotta)";
                 // Embed live point parameter
-                iframe.src = "https://www.youtube.com/embed/jfKfPfyJRdk?autoplay=1&start=840&controls=1&modestbranding=1";
+                   iframe.src = "https://www.youtube.com/embed/live_stream?channel=UCSJ4gkVC6NrvII8umztf0Ow&autoplay=1";
+}
             } else if (mode === 'sync') {
                 badge.innerText = "Time-Synced Replay";
                 badge.style.backgroundColor = "var(--color-slate)";
